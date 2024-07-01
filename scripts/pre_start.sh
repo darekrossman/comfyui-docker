@@ -58,7 +58,7 @@ then
     echo ""
     echo "   /start_comfyui.sh"
 else
-    /start_invokeai.sh
+    /start_comfyui.sh
 fi
 
 echo "All services have been started"
