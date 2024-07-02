@@ -11,7 +11,7 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "1.0.0"
+    default = "1.1.0"
 }
 
 variable "CU_VERSION" {
@@ -23,7 +23,7 @@ variable "BASE_IMAGE_REPOSITORY" {
 }
 
 variable "BASE_IMAGE_VERSION" {
-    default = "1.6.0"
+    default = "1.7.0"
 }
 
 variable "CUDA_VERSION" {
@@ -43,7 +43,7 @@ target "default" {
         INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.26.post1"
-        COMFYUI_COMMIT = "521421f53ee1ba74304dfaa138b0f851093e1595"
+        COMFYUI_COMMIT = "1ef66b095586981633cd11906e6d2e555deab9f6"
         APP_MANAGER_VERSION = "1.1.0"
         CIVITAI_DOWNLOADER_VERSION = "2.1.0"
     }
