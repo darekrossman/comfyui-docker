@@ -16,6 +16,7 @@ pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} --index-url ${INDEX_UR
 
 # Install requirements
 pip3 install -r requirements.txt
+pip3 install accelerate
 
 # Install ComfyUI Custom Nodes
 git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager
