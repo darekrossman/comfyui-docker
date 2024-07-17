@@ -71,7 +71,14 @@ then
     echo ""
     echo "   /start_comfyui.sh"
 else
-    /start_comfyui.sh
+    ARGS=()
+
+    if [[ ${EXTRA_ARGS} ]];
+    then
+          ARGS=("${ARGS[@]}" ${EXTRA_ARGS})
+    fi
+
+    /start_comfyui.sh "${ARGS[@]}"
 fi
 
 echo "All services have been started"
