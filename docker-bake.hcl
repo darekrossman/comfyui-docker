@@ -23,7 +23,7 @@ variable "BASE_IMAGE_REPOSITORY" {
 }
 
 variable "BASE_IMAGE_VERSION" {
-    default = "2.1.0"
+    default = "2.1.1"
 }
 
 variable "CUDA_VERSION" {
@@ -46,8 +46,8 @@ target "default" {
         BASE_IMAGE = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-python${PYTHON_VERSION}-cuda${CUDA_VERSION}-torch${TORCH_VERSION}"
         INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
-        XFORMERS_VERSION = "0.0.27.post1"
-        COMFYUI_COMMIT = "10c919f4c77b3615f0efa9014e8b77f294c23a2d"
+        XFORMERS_VERSION = "0.0.27.post2"
+        COMFYUI_COMMIT = "cf4418b806af5f7f67e3ce5b6ee386360b410bbb"
         APP_MANAGER_VERSION = "1.2.1"
         CIVITAI_DOWNLOADER_VERSION = "2.1.0"
     }
