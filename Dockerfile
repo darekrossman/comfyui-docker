@@ -16,7 +16,7 @@ ADD sdxl_vae.safetensors /sd-models/sdxl_vae.safetensors
 WORKDIR /
 COPY --chmod=755 build/* ./
 
-# Install InvokeAI
+# Install ComfyUI
 ARG TORCH_VERSION
 ARG XFORMERS_VERSION
 ARG INDEX_URL
