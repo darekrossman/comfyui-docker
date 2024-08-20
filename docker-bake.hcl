@@ -11,7 +11,7 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "2.3.5"
+    default = "2.4.0"
 }
 
 variable "CU_VERSION" {
@@ -47,7 +47,7 @@ target "default" {
         INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.27.post2"
-        COMFYUI_COMMIT = "a178e25912b01abf436eba1cfaab316ba02d272d"
+        COMFYUI_COMMIT = "5a69f84c3c38481dd0a78b25eb1111e82ade04b0"
         APP_MANAGER_VERSION = "1.2.1"
         CIVITAI_DOWNLOADER_VERSION = "2.1.0"
     }
