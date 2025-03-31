@@ -15,7 +15,7 @@
 
 * Ubuntu 22.04 LTS
 * CUDA 12.1
-* Python 3.11.11
+* Python 3.12.9
 * Torch 2.5.1
 * xformers 0.0.29.post1
 * [Jupyter Lab](https://github.com/jupyterlab/jupyterlab)
