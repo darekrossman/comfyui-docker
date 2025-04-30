@@ -11,7 +11,7 @@ python3 -m venv --system-site-packages venv
 source venv/bin/activate
 
 # Install torch, xformers and sageattention
-pip3 install --no-cache-dir --force-reinstall torch=="${TORCH_VERSION}" torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip3 install --no-cache-dir torch=="${TORCH_VERSION}" torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip3 install --no-cache-dir xformers=="${XFORMERS_VERSION}" --index-url https://download.pytorch.org/whl/cu121
 pip3 install sageattention
 
