@@ -89,7 +89,7 @@ docker run -d \
   -p 8000:8000 \
   -p 8888:8888 \
   -e JUPYTER_PASSWORD=Jup1t3R! \
-  -e EXTRA_ARGS=--lowvram \
+  -e EXTRA_ARGS=--lowvram --disable-xformers \
   ashleykza/comfyui:latest
 ```
 
@@ -107,12 +107,12 @@ You can obviously substitute the image name and tag with your own.
 
 ### Environment Variables
 
-| Variable             | Description                                                       | Default               |
-|----------------------|-------------------------------------------------------------------|-----------------------|
-| JUPYTER_LAB_PASSWORD | Set a password for Jupyter lab                                    | not set - no password |
-| DISABLE_AUTOLAUNCH   | Disable application from launching automatically                  | (not set)             |
-| DISABLE_SYNC         | Disable syncing if using a RunPod network volume                  | (not set)             |
-| EXTRA_ARGS           | Specify extra command line arguments for ComfyUI, eg. `--lowvram` | (not set)             |
+| Variable             | Description                                                                                 | Default               |
+|----------------------|---------------------------------------------------------------------------------------------|-----------------------|
+| JUPYTER_LAB_PASSWORD | Set a password for Jupyter lab                                                              | not set - no password |
+| DISABLE_AUTOLAUNCH   | Disable application from launching automatically                                            | (not set)             |
+| DISABLE_SYNC         | Disable syncing if using a RunPod network volume                                            | (not set)             |
+| EXTRA_ARGS           | Specify extra command line arguments for ComfyUI, eg. `--lowvram`, `--disable-xformers` etc | (not set)             |
 
 ## Logs
 
