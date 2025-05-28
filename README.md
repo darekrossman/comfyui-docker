@@ -56,8 +56,14 @@ git clone https://github.com/ashleykleynhans/comfyui-docker.git
 # Log in to Docker Hub
 docker login
 
-# Build the image, tag the image, and push the image to Docker Hub
+# Build the default image (CUDA 12.8 and Python 3.12), tag the image, and push the image to Docker Hub
 docker buildx bake -f docker-bake.hcl --push
+
+# OR build a different image (eg. CUDA 12.4 and Python 3.11), tag the image, and push the image to Docker Hub
+docker buildx bake -f docker-bake.hcl cu124-py311 --push
+
+# OR build ALL images, tag the images, and push the images to Docker Hub
+docker buildx bake -f docker-bake.hcl all --push
 
 # Same as above but customize registry/user/release:
 REGISTRY=ghcr.io REGISTRY_USER=myuser RELEASE=my-release docker buildx \
