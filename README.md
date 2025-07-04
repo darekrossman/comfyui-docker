@@ -32,9 +32,23 @@
 ## Available on RunPod
 
 This image is designed to work on [RunPod](https://runpod.io?ref=2xxro4sy).
-You can use my custom [RunPod template](
-https://runpod.io/console/deploy?template=9eqyhd7vs0&ref=2xxro4sy)
-to launch it on RunPod.
+
+There are options for both CUDA 12.4 (for **non 5090** GPU types),
+and CUDA 12.8 (for the **RTX 5090** GPU type).
+
+There are also options for Python 3.11 and Python 3.12 for each since
+some ComfyUI custom nodes require Python 3.11 and don't work correctly
+with Python 3.12.
+
+Click on the appropriate link below to deploy the template of your choice on Runpod.
+
+| Runpod Template Version                                                                      | Runpod Template Description                                            |
+|----------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| [CUDA 12.4 + Python 3.11](https://runpod.io/console/deploy?template=ymfa1ds0d1&ref=2xxro4sy) | Template with CUDA 12.4 and Python 3.11 for **non-RTX 5090** GPU types |
+| [CUDA 12.4 + Python 3.12](https://runpod.io/console/deploy?template=9eqyhd7vs0&ref=2xxro4sy) | Template with CUDA 12.4 and Python 3.12 for **non-RTX 5090** GPU types |
+| [CUDA 12.8 + Python 3.11](https://runpod.io/console/deploy?template=moapg9g7mn&ref=2xxro4sy) | Template with CUDA 12.8 and Python 3.11 for **RTX 5090** GPU type      |
+| [CUDA 12.8 + Python 3.12](https://runpod.io/console/deploy?template=jv061dyevn&ref=2xxro4sy) | Template with CUDA 12.8 and Python 3.12 for **RTX 5090** GPU type      |
+
 
 ## Building the Docker image
 
