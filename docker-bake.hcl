@@ -19,7 +19,7 @@ variable "BASE_IMAGE_REPOSITORY" {
 }
 
 variable "BASE_IMAGE_VERSION" {
-    default = "2.4.3"
+    default = "2.4.4"
 }
 
 group "default" {
