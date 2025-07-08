@@ -11,7 +11,7 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "v0.3.43"
+    default = "v0.3.44"
 }
 
 variable "BASE_IMAGE_REPOSITORY" {
@@ -72,10 +72,10 @@ target "cu128-py311" {
     tags = ["${REGISTRY}/${REGISTRY_USER}/${APP}:cu128-py311-${RELEASE}"]
     args = {
         RELEASE                    = "${RELEASE}"
-        BASE_IMAGE                 = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-python3.11-cuda12.8.1-torch2.7.0"
+        BASE_IMAGE                 = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-python3.11-cuda12.8.1-torch2.7.1"
         INDEX_URL                  = "https://download.pytorch.org/whl/cu128"
-        TORCH_VERSION              = "2.7.0+cu128"
-        XFORMERS_VERSION           = "0.0.30"
+        TORCH_VERSION              = "2.7.1+cu128"
+        XFORMERS_VERSION           = "0.0.31"
         COMFYUI_VERSION            = "${RELEASE}"
         APP_MANAGER_VERSION        = "1.2.2"
         CIVITAI_DOWNLOADER_VERSION = "2.1.0"
@@ -88,10 +88,10 @@ target "cu128-py312" {
     tags = ["${REGISTRY}/${REGISTRY_USER}/${APP}:cu128-py312-${RELEASE}"]
     args = {
         RELEASE                    = "${RELEASE}"
-        BASE_IMAGE                 = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-python3.12-cuda12.8.1-torch2.7.0"
+        BASE_IMAGE                 = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-python3.12-cuda12.8.1-torch2.7.1"
         INDEX_URL                  = "https://download.pytorch.org/whl/cu128"
-        TORCH_VERSION              = "2.7.0+cu128"
-        XFORMERS_VERSION           = "0.0.30"
+        TORCH_VERSION              = "2.7.1+cu128"
+        XFORMERS_VERSION           = "0.0.31"
         COMFYUI_VERSION            = "${RELEASE}"
         APP_MANAGER_VERSION        = "1.2.2"
         CIVITAI_DOWNLOADER_VERSION = "2.1.0"
