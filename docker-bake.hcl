@@ -3,15 +3,15 @@ variable "REGISTRY" {
 }
 
 variable "REGISTRY_USER" {
-    default = "ashleykza"
+    default = "darekrossman493"
 }
 
 variable "APP" {
-    default = "comfyui"
+    default = "runpod-worker-comfyui"
 }
 
 variable "RELEASE" {
-    default = "v0.3.47"
+    default = "v0.0.1"
 }
 
 variable "BASE_IMAGE_REPOSITORY" {
@@ -95,6 +95,7 @@ target "cu128-py312" {
         COMFYUI_VERSION            = "${RELEASE}"
         APP_MANAGER_VERSION        = "1.2.2"
         CIVITAI_DOWNLOADER_VERSION = "2.1.0"
+        TORCH_CUDA_ARCH_LIST       = "12.0"
     }
     platforms = ["linux/amd64"]
 }

@@ -2,13 +2,14 @@
 
 export PYTHONUNBUFFERED=1
 export APP="ComfyUI"
+export WORKSPACE_DIR="/runpod-volume"
 
 TEMPLATE_NAME="comfyui"
-TEMPLATE_VERSION_FILE="/workspace/${APP}/template.json"
+TEMPLATE_VERSION_FILE="${WORKSPACE_DIR}/${APP}/template.json"
 
 echo "TEMPLATE NAME: ${TEMPLATE_NAME}"
 echo "TEMPLATE VERSION: ${TEMPLATE_VERSION}"
-echo "VENV PATH: /workspace/${APP}/venv"
+echo "VENV PATH: ${WORKSPACE_DIR}/${APP}/venv"
 
 if [[ -e ${TEMPLATE_VERSION_FILE} ]]; then
     EXISTING_TEMPLATE_NAME=$(jq -r '.template_name // empty' "$TEMPLATE_VERSION_FILE")
@@ -45,8 +46,8 @@ sync_directory() {
     # Ensure destination directory exists
     mkdir -p "${dst_dir}"
 
-    # Check whether /workspace is fuse, overlay, or xfs
-    local workspace_fs=$(df -T /workspace | awk 'NR==2 {print $2}')
+    # Check whether ${WORKSPACE_DIR} is fuse, overlay, or xfs
+    local workspace_fs=$(df -T ${WORKSPACE_DIR} | awk 'NR==2 {print $2}')
     echo "SYNC: File system type: ${workspace_fs}"
 
     if [ "${workspace_fs}" = "fuse" ]; then
@@ -89,7 +90,7 @@ sync_directory() {
         echo "SYNC: Using rsync for sync"
         rsync -rlptDu "${src_dir}/" "${dst_dir}/"
     else
-        echo "SYNC: Unknown filesystem type (${workspace_fs}) for /workspace, defaulting to rsync"
+        echo "SYNC: Unknown filesystem type (${workspace_fs}) for ${WORKSPACE_DIR}, defaulting to rsync"
         rsync -rlptDu "${src_dir}/" "${dst_dir}/"
     fi
 }
@@ -103,9 +104,9 @@ sync_apps() {
         start_time=$(date +%s)
 
         echo "SYNC: Sync 1 of 1"
-        sync_directory "/${APP}" "/workspace/${APP}"
+        sync_directory "/${APP}" "${WORKSPACE_DIR}/${APP}"
         save_template_json
-        echo "${VENV_PATH}" > "/workspace/${APP}/venv_path"
+        echo "${VENV_PATH}" > "${WORKSPACE_DIR}/${APP}/venv_path"
 
         # End the timer and calculate the duration
         end_time=$(date +%s)
@@ -122,7 +123,7 @@ sync_apps() {
 
 fix_venvs() {
     echo "VENV: Fixing venv..."
-    /fix_venv.sh /ComfyUI/venv /workspace/ComfyUI/venv
+    /fix_venv.sh /ComfyUI/venv ${WORKSPACE_DIR}/ComfyUI/venv
 }
 
 if [ "$(printf '%s\n' "$EXISTING_VERSION" "$TEMPLATE_VERSION" | sort -V | head -n 1)" = "$EXISTING_VERSION" ]; then
@@ -131,7 +132,7 @@ if [ "$(printf '%s\n' "$EXISTING_VERSION" "$TEMPLATE_VERSION" | sort -V | head -
         fix_venvs
 
         # Create logs directory
-        mkdir -p /workspace/logs
+        mkdir -p ${WORKSPACE_DIR}/logs
     else
         echo "SYNC: Existing version is the same as the template version, no syncing required."
     fi
@@ -139,9 +140,9 @@ else
     echo "SYNC: Existing version is newer than the template version, not syncing!"
 fi
 
-# Start application manager
-cd /app-manager
-npm start > /workspace/logs/app-manager.log 2>&1 &
+# # Start application manager
+# cd /app-manager
+# npm start > ${WORKSPACE_DIR}/logs/app-manager.log 2>&1 &
 
 if [[ ${DISABLE_AUTOLAUNCH} ]]
 then
